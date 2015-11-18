@@ -1,4 +1,9 @@
 <h1>
   <%= gravatar_for @user %>
   <%= @user.name %>
+  <%= @user.email %>
+  <%= @user.area %>
+  <%= @user.profile %>
+  
+  <%= link_to "Update", edit_user_path, class: "btn btn-primary" %>
 </h1>

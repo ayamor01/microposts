@@ -17,6 +17,14 @@ class UsersController < ApplicationController
     end
   end
   
+  def edit
+  end
+  
+  def update
+    if @user.update(user_params)
+      redirect_to root_path, notice: 'Updated profile'
+    else render 'edit'
+  
   private
   
   def user_params
