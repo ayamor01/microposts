@@ -2,16 +2,15 @@
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-    <%= form_for(:session, url: login_path) do |f| %>
+    <%= form_for(@user) do |f| %>
+      <%= f.label :name %>
+      <%= f.text_field :name, class: 'form-control' %>
 
       <%= f.label :email %>
       <%= f.email_field :email, class: 'form-control' %>
-
-      <%= f.label :password %>
-      <%= f.password_field :password, class: 'form-control' %>
       
       <%= f.label :area %>
-      <%= f.input_field :area, class: 'form-control' %>
+      <%= f.text_field :area, class: 'form-control' %>
       
       <%= f.label :profile %>
       <%= f.text_field :profile, class: 'form-control' %>
