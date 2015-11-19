@@ -16,6 +16,12 @@
       
       <%= f.label :profile %>
       <%= f.text_field :profile, class: 'form-control' %>
+            
+      <%= f.label :password %>
+      <%= f.password_field :password, class: 'form-control' %>
+
+      <%= f.label :password_confirmation, "Confirmation" %>
+      <%= f.password_field :password_confirmation, class: 'form-control' %>
 
       <%= f.submit "Update", class: "btn btn-primary" %>
     <% end %>
