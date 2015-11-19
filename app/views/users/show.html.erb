@@ -3,8 +3,23 @@
   <%= @user.name %>
 </h1>
 
-Email: <%= @user.email %><br>
-Area: <%= @user[:area] %><br>
-Profile: <%= @user[:profile] %><br>
-  
-<%= link_to "Update", edit_user_path, class: "btn btn-primary" %>
+<div class="row">
+  <div class="col-md-4 col-md-offset-4">
+    <p>
+      <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+      <b>Email:</b> <%= @user.email %>
+    </p>
+    <p>
+      <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
+      <b>Area:</b> <%= @user[:area] %>
+    </p>
+    <p>
+      <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+      <b>Profile:</b> <%= @user[:profile] %>
+    </p>
+    <% if session[:user_id] == @user.id %>
+      <%= link_to "Edit user information", edit_user_path, class: "btn btn-primary btn-block" %>
+    <% else %>
+    <% end %>
+  </div>
+</div>
