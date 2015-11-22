@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   def show
     @user = User.find_by(id: params[:id])
+    @microposts = @user.microposts
     if @user == nil
       flash[:danger] = "Couldn't find user"
       redirect_to root_path
