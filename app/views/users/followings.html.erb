@@ -19,23 +19,20 @@
       </p>
       <p>
         <span>
-          <%= link_to pluralize(@user.following_users.count, "following"), followings_user_path %>
+          <%= pluralize(@user.following_users.count, "following") %>
           <%= link_to pluralize(@user.follower_users.count, "follower"), followers_user_path %>
         </span>
       </p>
-        <% if session[:user_id] == @user.id %>
-         <%= link_to "Edit user information", edit_user_path, class: "btn btn-primary btn-block" %>
-        <% else %>
-        <% end %>
     </section>
   </aside>
   <div class="col-md-8">
-    <%= render 'follow_form' if logged_in? %>
-    <% if @user.microposts.any? %>
-      <h3>Microposts (<%= @user.microposts.count %>)</h3>
-      <ol class="microposts">
-        <%= render @microposts %>
-      </ol>
+    <h1>Followings</h1>
+    <% @followings.each do |following| %>
+     <li>
+      <%= link_to gravatar_for(following, size: 50), following %>
+      <span class="user"><h3><%= link_to following.name, following %></h3></span>
+      <span class="profile"><%= following.profile %></span>
+     </li>
     <% end %>
   </div>
 </div>
