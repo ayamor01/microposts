@@ -28,7 +28,7 @@
   <div class="col-md-8">
     <h1>Followers</h1>
     <% @followers.each do |follower| %>
-     <li>
+     <li class="clearfix">
       <%= link_to gravatar_for(follower, size: 50), follower %>
       <span class="user"><h3><%= link_to follower.name, follower %></h3></span>
       <span class="profile"><%= follower.profile %></span>
