@@ -3,12 +3,17 @@
   <span class="user"><%= link_to micropost.user.name, micropost.user %></span>
   <span class="content"><%= micropost.content %></span>
   <span class="favorited">
-    <% if current_user.favorite_relationships.find_by(micropost.id) %>
-     ★Favorited
+    <% if current_user.favorited_past?(micropost) %>
+      <%= form_for(current_user.favorite_relationships.find_by(favorited_id: micropost.id),
+             html: { method: :delete },
+             remote: true) do |f| %>
+      <%= f.submit "Unfavorite", class: "btn" %>
+      <% end %>
     <% else %>
-     <button type="button" class="btn btn-default btn-sm">
-       <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Favorite
-     </button>
+      <%= form_for(current_user.favorite_relationships.build, remote: true) do |f| %>
+       <div><%= hidden_field_tag :favorited_id, micropost.id %></div>
+       <%= f.submit "Favorite", class: "btn btn-default" %>
+      <% end %>
     <% end %>
   </span>
   <span class="timestamp">
