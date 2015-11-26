@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
                                     dependent:   :destroy
     has_many :follower_users, through: :follower_relationships, source: :follower
     
-    has_many :favorite_relationships, class_name: "Favorite", foreign_key: "user_id", dependent: :destroy
+    has_many :favorite_relationships, class_name: "Favorite", foreign_key: "favorited_id", dependent: :destroy
     
     # 他のユーザーをフォローする
   def follow(other_user)
@@ -42,18 +42,18 @@ class User < ActiveRecord::Base
   
   # Favorite micropost
   def favorite(micropost)
-    favorite_relationships.find_or_create_by(favorited_id: micropost_id)
+    favorite_relationships.find_or_create_by(favorited_id: micropost.id)
   end
   
   # Unfavorite micropost
   def unfavorite(micropost)
-    favorite_relationship = favorite_relationships.find_by(favorited_id: micropost_id)
+    favorite_relationship = favorite_relationships.find_by(favorited_id: micropost.id)
     favorite_relationship.destroy if favorite_relationship
   end
   
   # Has been favorited this micropost?
   def favorited_past?(micropost)
-    favorited_id.include?(micropost_id)
+    favorited_id.include?(micropost.id)
   end
   
 end

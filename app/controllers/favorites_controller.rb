@@ -2,7 +2,7 @@ class FavoritesController < ApplicationController
     before_action :logged_in_user
 
   def create
-    @micropost = User.find(params[:favorited_id])
+    @micropost = Micropost.find(params[:id])
     current_user.favorite(@micropost)
   end
 
