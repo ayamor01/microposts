@@ -20,20 +20,18 @@
       <p>
         <span>
           <%= link_to pluralize(@user.following_users.count, "following"), followings_user_path %>
-          <%= pluralize(@user.follower_users.count, "follower") %>
-          <%= link_to pluralize(@user.favorite_microposts.count, "favorite"), favorites_user_path %>
+          <%= link_to pluralize(@user.follower_users.count, "follower"), followers_user_path %>
+          <%= pluralize(@user.favorite_microposts.count, "favorite") %>
         </span>
       </p>
     </section>
   </aside>
   <div class="col-md-8">
-    <h1>Followers</h1>
-    <% @followers.each do |follower| %>
-     <li class="clearfix">
-      <%= link_to gravatar_for(follower, size: 50), follower %>
-      <span class="user"><h3><%= link_to follower.name, follower %></h3></span>
-      <span class="profile"><%= follower.profile %></span>
-     </li>
+    <h3>Favorites (<%= @user.favorite_microposts.count %>)</h3>
+    <% if @favorite_microposts.any? %>
+      <ol class="microposts">
+        <%= render @favorite_microposts %>
+      </ol>
     <% end %>
   </div>
 </div>

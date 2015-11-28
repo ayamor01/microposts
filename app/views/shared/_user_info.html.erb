@@ -4,4 +4,5 @@
 <span>
     <%= link_to pluralize(current_user.following_users.count, "following"), followings_user_path(current_user) %>
     <%= link_to pluralize(current_user.follower_users.count, "follower"), followers_user_path(current_user) %>
+    <%= link_to pluralize(current_user.favorite_microposts.count, "favorite"), favorites_user_path(current_user) %>
 </span>

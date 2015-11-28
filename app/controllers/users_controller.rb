@@ -55,6 +55,11 @@ class UsersController < ApplicationController
     @followers = @user.follower_users
   end
   
+  def favorites
+    @user = User.find_by(id: params[:id])
+    @favorite_microposts = @user.favorite_microposts.includes(:user).order(created_at: :desc)
+  end
+  
   private
   
   def user_params
