@@ -19,9 +19,21 @@
       </p>
       <p>
         <span>
-          <%= link_to pluralize(@user.following_users.count, "following"), followings_user_path %>
-          <%= pluralize(@user.follower_users.count, "follower") %>
-          <%= link_to pluralize(@user.favorite_microposts.count, "favorite"), favorites_user_path %>
+          <a href="<%= followings_user_path %>">
+            <strong>
+              <%= pluralize(@user.following_users.count, "following") %>
+            </strong>
+          </a>
+          <a href="<%= followers_user_path %>">
+            <strong>
+              <%= pluralize(@user.follower_users.count, "follower") %>
+            </strong>
+          </a>
+          <a href="<%= favorites_user_path %>">
+            <strong>
+              <%= pluralize(@user.favorite_microposts.count, "favorite") %>
+            </strong>
+          </a>
         </span>
       </p>
     </section>

@@ -1,1 +1,2 @@
 $("#micropost-<%= @micropost.id %>>.favorite_btn").html("<%= escape_javascript(render('microposts/unfavorite', micropost: @micropost)) %>");
+$("#favorites_counts").html("<%= pluralize(current_user.favorite_microposts.count, "favorite") %>");
